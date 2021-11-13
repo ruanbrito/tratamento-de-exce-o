@@ -45,16 +45,17 @@ public class Account {
 	public void deposit(Double amount) {
 		this.balance += amount;
 	}
-	
-	public void withdraw(Double amount) throws DomainException{
-		
-		if(amount > this.balance) {
-			throw new DomainException("Not enough balance");
-		} if(amount > withdrawLimit) {
+
+	public void withdraw(Double amount) throws DomainException {
+
+		if (amount > getWithdrawLimit()) {
 			throw new DomainException("The amount exceeds withdraw limit");
 		}
-		this.balance -= amount;
-		System.out.println("New balance: " + this.balance);
+		if (amount > getBalance()) {
+			throw new DomainException("Not enough balance");
+		}
+		 this.balance -= amount;
+		System.out.println("New balance: " + String.format("%.2f", this.balance));
 	}
 
 }

@@ -17,11 +17,12 @@ public class Program {
 			System.out.println("Enter account data");
 			System.out.print("Number: ");
 			int number = scn.nextInt();
+			scn.nextLine();
 			System.out.print("Holder: ");
 			String holder = scn.nextLine();
 			System.out.print("Initial balance: ");
 			Double balance = scn.nextDouble();
-			System.out.println("Withdraw limit: ");
+			System.out.print("Withdraw limit: ");
 			Double withdrawLimit = scn.nextDouble();
 
 			Account acc = new Account(number, holder, balance, withdrawLimit);
@@ -31,7 +32,7 @@ public class Program {
 			Double amount = scn.nextDouble();
 			acc.withdraw(amount);
 		} catch (DomainException e) {
-			System.out.println("Withdraw error: " + e);
+			System.out.println("Withdraw error: "+ e.getMessage());
 		}
 
 		scn.close();
